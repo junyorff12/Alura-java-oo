@@ -1,6 +1,8 @@
 package br.com.bytebank.banco.test.util;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 import br.com.bytebank.banco.modelo.Conta;
 import br.com.bytebank.banco.modelo.ContaCorrente;
@@ -23,6 +25,8 @@ public class TesteArrayListEquals {
 		for(Conta c: lista) {
 			System.out.println(c);
 		}
+		
+		Collections.sort(null);
 	}
 
 }
