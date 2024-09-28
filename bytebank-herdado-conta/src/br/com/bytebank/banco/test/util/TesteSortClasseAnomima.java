@@ -9,7 +9,7 @@ import br.com.bytebank.banco.modelo.Conta;
 import br.com.bytebank.banco.modelo.ContaCorrente;
 import br.com.bytebank.banco.modelo.ContaPoupanca;
 
-public class TesteSort {
+public class TesteSortClasseAnomima {
 
 	public static void main(String[] args) {
 //		Comparando number:
@@ -59,13 +59,22 @@ public class TesteSort {
 		lista.add(cc3);
 		lista.add(cc4);
 		
-		
 		for (Conta c : lista) {
 			System.out.println(c.toString());
 		}
 		
 		//lista.sort(new NumeroContaComparator());
-		lista.sort(new NomeTitularComparator2());
+//		lista.sort(new Comparator<Conta>() {
+//
+//			@Override
+//			public int compare(Conta o1, Conta o2) {
+//				return o1.getTitular().getNome().compareTo(o2.getTitular().getNome());
+//			}
+//			
+//		});
+		Comparator<Conta> comp = (c1, c2) -> c1.getTitular().getNome().compareTo(c2.getTitular().getNome()); 
+		
+		lista.sort(comp);	
 		
 		System.out.println("-------------------------------------");
 		
@@ -76,7 +85,7 @@ public class TesteSort {
 	}
 	
 }
-class NomeTitularComparator implements Comparator<Conta> {
+class NomeTitularComparator2 implements Comparator<Conta> {
 
 	@Override
 	public int compare(Conta c1, Conta c2) {
@@ -88,7 +97,7 @@ class NomeTitularComparator implements Comparator<Conta> {
 	
 }
 
-class NumeroContaComparator implements Comparator<Conta> {
+class NumeroContaComparator2 implements Comparator<Conta> {
 
 	@Override
 	public int compare(Conta c1, Conta c2) {
